@@ -1,7 +1,12 @@
+from pathlib import Path
 import pandas as pd
 import unicodedata
 from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
+
+BASE_DIR = Path(__file__).resolve().parent
+
+
 
 app = Flask(__name__)
 CORS(app)
@@ -13,7 +18,8 @@ def normalizar(texto):
         if unicodedata.category(c) != 'Mn'
     )
 
-df = pd.read_csv(r"C:\Users\windows\Desktop\escuela\IFTS Nº18\A2 C2\Tecnicas de Procesamiento del Habla\chatbot\proyecto\ia_data.csv")
+csv_path = BASE_DIR / "ia_data.csv"
+df = pd.read_csv(csv_path)
 df = df.applymap(normalizar)
 df["score"] = df["score"].astype(int)
 
