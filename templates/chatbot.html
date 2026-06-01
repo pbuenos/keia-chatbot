@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Chatbot IA</title>
+
+<style>
+
+body{
+    background:#0f172a;
+    font-family:Arial;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    margin:0;
+}
+
+.chat-container{
+    width:400px;
+    height:600px;
+    background:#1e293b;
+    border-radius:15px;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+}
+
+.chat-box{
+    flex:1;
+    padding:20px;
+    overflow-y:auto;
+    color:white;
+}
+
+.message{
+    margin-bottom:15px;
+    padding:10px;
+    border-radius:10px;
+    max-width:80%;
+}
+
+.bot{
+    background:#334155;
+}
+
+.user{
+    background:#2563eb;
+    margin-left:auto;
+}
+
+.input-area{
+    display:flex;
+}
+
+input{
+    flex:1;
+    padding:15px;
+    border:none;
+}
+
+button{
+    padding:15px;
+    border:none;
+    background:#3b82f6;
+    color:white;
+    cursor:pointer;
+}
+
+.opciones-chat{
+    display:inline-flex;
+    flex-wrap:wrap;
+    gap:5px;
+    margin-bottom:15px;
+}
+
+.opciones-chat button{
+    padding:8px 12px;
+    border-radius:20px;
+}
+
+.bot-opciones{
+    display:inline-block;
+    width:auto;
+    padding:10px;
+    border-radius:10px;
+    background:#334155;
+    margin-bottom:15px;
+}
+</style>
+
+</head>
+
+<body>
+
+    <div class="chat-container">
+
+        <div class="chat-box" id="chat-box"></div>
+
+        
+        <div class="input-area">
+
+            <input type="text" id="mensaje"
+                onkeypress="manejarEnter(event)"
+                placeholder="Escribe...">
+
+            <button onclick="enviarMensaje()">
+                Enviar
+            </button>
+
+        </div>
+
+    </div>
+</body>
+
+<script>
+
+let estado = {};
+
+const chatBox = document.getElementById("chat-box");
+
+function agregarMensaje(texto, clase){
+
+    const div = document.createElement("div");
+
+    div.classList.add("message");
+    div.classList.add(clase);
+
+    div.innerText = texto;
+
+    chatBox.appendChild(div);
+
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+
+async function enviarMensaje(){
+
+    const input = document.getElementById("mensaje");
+
+    const mensaje = input.value.trim();
+
+    if(!mensaje){
+        return;
+    }
+
+    agregarMensaje(mensaje, "user");
+
+    input.value = "";
+
+    const response = await fetch("/chat", {
+
+        method:"POST",
+
+        headers:{
+            "Content-Type":"application/json"
+        },
+
+        body: JSON.stringify({
+            mensaje,
+            estado
+        })
+    });
+
+    const data = await response.json();
+
+    estado = data.estado;
+
+    agregarMensaje(data.respuesta, "bot");
+
+    if(data.opciones){
+        mostrarOpciones(data.opciones);
+    }
+
+    if (data.link) {
+        const div = document.createElement("div");
+
+        const boton = document.createElement("button");
+        boton.innerText = "🔗 Visitar";
+        boton.style.marginTop = "10px";
+
+        boton.onclick = () => {
+            window.open(data.link, "_blank");
+        };
+
+        div.appendChild(boton);
+        chatBox.appendChild(div);
+
+        
+        boton.style.background = "#22c55e";
+        boton.style.color = "white";
+        boton.style.border = "none";
+        boton.style.padding = "8px 12px";
+        boton.style.borderRadius = "8px";
+}
+}
+
+window.onload = async () => {
+
+    const response = await fetch("/chat", {
+
+        method:"POST",
+
+        headers:{
+            "Content-Type":"application/json"
+        },
+
+        body: JSON.stringify({
+            mensaje:"hola",
+            estado
+        })
+    });
+
+    const data = await response.json();
+
+    estado = data.estado;
+
+    agregarMensaje(data.respuesta, "bot");
+
+    if(data.opciones){
+        mostrarOpciones(data.opciones);
+    }
+}
+
+function mostrarOpciones(opciones){
+
+    const div = document.createElement("div");
+    div.classList.add("opciones-chat");
+
+    opciones.forEach(opcion => {
+
+        const boton = document.createElement("button");
+
+        boton.textContent = opcion;
+
+        boton.onclick = () => {
+
+            document.getElementById("mensaje").value = opcion;
+            enviarMensaje();
+
+            div.remove();
+        };
+
+        div.appendChild(boton);
+
+    });
+
+    chatBox.appendChild(div);
+
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function manejarEnter(event){
+
+    if(event.key === "Enter"){
+        enviarMensaje();
+    }
+
+}
+
+</script>
+
+</body>
+</html>
