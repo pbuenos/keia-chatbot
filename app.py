@@ -20,7 +20,7 @@ def normalizar(texto):
 
 csv_path = BASE_DIR / "ia_data.csv"
 df = pd.read_csv(csv_path)
-df = df.applymap(normalizar)
+df = df.map(normalizar)
 df["score"] = df["score"].astype(int)
 
 @app.route("/")
