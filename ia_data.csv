@@ -1,18 +1,37 @@
 rubro,nivel,plan,prioridad,fuente_ia,recomendacion,score,link
 programacion,principiante,gratuito,facilidad,chatgpt,Codeium,90,https://windsurf.com/
-programacion,principiante,gratuito,facilidad,gemini,Codeium,95,https://windsurf.com/
 programacion,principiante,gratuito,profesional,claude,GitHub Copilot,93,https://github.com/copilot
 programacion,principiante,gratuito,velocidad,claude,GitHub Copilot,99,https://github.com/copilot
-programacion,principiante,premium,velocidad,gemini,Codeium,98,https://windsurf.com/
 programacion,principiante,premium,velocidad,claude,Codeium,96,https://windsurf.com/
+programacion,principiante,premium,facilidad,gemini,Codeium,95,https://windsurf.com/
 programacion,principiante,premium,profesional,chatgpt,ChatGPT,91,https://chatgpt.com/
-programacion,principiante,premium,profesional,claude,ChatGPT,90,https://chatgpt.com/
+programacion,avanzado,gratuito,velocidad,claude,ChatGPT,90,https://chatgpt.com/
+programacion,avanzado,gratuito,profesional,claude,GitHub Copilot,99,https://github.com/copilot
+programacion,avanzado,gratuito,facilidad,claude,Codeium,95,https://windsurf.com/
+programacion,avanzado,premium,profesional,claude,GitHub Copilot,99,https://github.com/copilot
 programacion,avanzado,premium,velocidad,chatgpt,Cursor Pro,92,https://cursor.com/pricing
+programacion,avanzado,premium,facilidad,claude,Codeium,96,https://windsurf.com/
 diseño,principiante,gratuito,velocidad,gemini,Canva,94,https://www.canva.com/
+diseño,principiante,gratuito,facilidad,gemini,Canva,94,https://www.canva.com/
+diseño,principiante,gratuito,profesional,gemini,Canva,94,https://www.canva.com/
+diseño,principiante,premium,facilidad,gemini,Canva,94,https://www.canva.com/
+diseño,principiante,premium,velocidad,claude,Midjourney,90,https://www.midjourney.com/home
+diseño,principiante,premium,profesional,chatgpt,Adobe Firefly,90,https://www.adobe.com/ar/products/firefly.html
 diseño,avanzado,premium,profesional,claude,Midjourney,96,https://www.midjourney.com/home
-diseño,avanzado,premium,profesional,chatgpt,Adobe Firefly,99,https://www.adobe.com/ar/products/firefly.html
+diseño,avanzado,premium,facilidad,chatgpt,Adobe Firefly,92,https://www.adobe.com/ar/products/firefly.html
+diseño,avanzado,premium,velocidad,claude,Midjourney,96,https://www.midjourney.com/home
+diseño,avanzado,gratuito,profesional,chatgpt,Adobe Firefly,99,https://www.adobe.com/ar/products/firefly.html
+diseño,avanzado,gratuito,velocidad,chatgpt,Midjourney,96,https://www.midjourney.com/home
+diseño,avanzado,gratuito,facilidad,chatgpt,Adobe Firefly,94,https://www.adobe.com/ar/products/firefly.html
 escritura,principiante,gratuito,facilidad,chatgpt,ChatGPT,90,https://chatgpt.com/
+escritura,principiante,gratuito,velocidad,gemini,Codeium,95,https://windsurf.com/
+escritura,principiante,gratuito,profesional,chatgpt,Claude Pro,91,https://claude.com/pricing/pro
+escritura,principiante,premium,velocidad,chatgpt,Claude Pro,91,https://claude.com/pricing/pro
+escritura,principiante,premium,facilidad,gemini,Claude Pro,95,https://claude.com/pricing/pro
+escritura,principiante,premium,profesional,chatgpt,Claude Pro,91,https://claude.com/pricing/pro
+escritura,avanzado,gratuito,velocidad,gemini,Codeium,95,https://windsurf.com/
+escritura,avanzado,gratuito,facilidad,claude,Claude Pro,91,https://claude.com/pricing/pro
+escritura,avanzado,gratuito,profesional,gemini,Jasper,94,https://www.jasper.ai/
 escritura,avanzado,premium,velocidad,claude,Claude Pro,91,https://claude.com/pricing/pro
-escritura,avanzado,premium,velocidad,chatgpt,Claude Pro,91,https://claude.com/pricing/pro
-escritura,avanzado,premium,velocidad,gemini,Claude Pro,95,https://claude.com/pricing/pro
+escritura,avanzado,premium,facilidad,gemini,Claude Pro,95,https://claude.com/pricing/pro
 escritura,avanzado,premium,profesional,gemini,Jasper,94,https://www.jasper.ai/
